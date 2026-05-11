@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI Stock Report — May 11, 2026</title>
+<style>
+:root{
+  --teal:#0F6E56;--teal-l:#E1F5EE;--teal-m:#1D9E75;
+  --gd:#3B6D11;--gl:#EAF3DE;
+  --ad:#854F0B;--al:#FAEEDA;
+  --rd:#A32D2D;--rl:#FCEBEB;
+  --bd:#185FA5;--bl:#E6F1FB;
+  --g1:#2C2C2A;--g2:#5F5E5A;--g3:#B4B2A9;
+  --gbg:#F5F4F0;--border:#D3D1C7;--white:#FFFFFF;
+  --sw:210px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:13px;color:var(--g1);background:var(--gbg);display:flex;}
+#sb{width:var(--sw);min-width:var(--sw);height:100vh;position:fixed;top:0;left:0;background:var(--g1);color:#e0e0d8;display:flex;flex-direction:column;overflow:hidden;z-index:100;}
+#sb-h{padding:12px 12px 8px;border-bottom:1px solid rgba(255,255,255,.08);flex-shrink:0;}
+.sb-ix{font-size:9px;letter-spacing:.12em;color:var(--teal-m);text-transform:uppercase;font-weight:700;}
+.sb-v{font-size:19px;font-weight:700;color:#fff;line-height:1.2;margin-top:2px;}
+.sb-s{font-size:9px;color:#999;margin-top:2px;}
+#sb-f{margin:7px 9px 4px;flex-shrink:0;}
+#sb-f input{width:100%;padding:5px 9px;border-radius:4px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.07);color:#e0e0d8;font-size:11px;outline:none;}
+#sb-f input::placeholder{color:#666;}
+#sb-l{overflow-y:auto;flex:1;padding-bottom:12px;}
+#sb-l::-webkit-scrollbar{width:4px;}
+#sb-l::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);border-radius:2px;}
+.sg{padding:6px 9px 2px;font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:#555;font-weight:700;}
+.si{display:flex;align-items:center;padding:5px 10px;text-decoration:none;color:#c0c0b8;gap:6px;border-left:3px solid transparent;transition:background .12s;}
+.si:hover{background:rgba(255,255,255,.06);color:#fff;}
+.si.active{background:rgba(15,110,86,.2);border-left-color:var(--teal-m);color:#fff;}
+.si .st{font-weight:700;font-size:12px;min-width:42px;color:#fff;}
+.si .sn{font-size:9.5px;color:#888;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;}
+.si .sr{font-size:8.5px;font-weight:700;padding:1px 5px;border-radius:3px;white-space:nowrap;}
+.rsb{background:var(--gl);color:var(--gd);}.rb{background:var(--teal-l);color:var(--teal);}
+.rh{background:var(--al);color:var(--ad);}.ru{background:var(--rl);color:var(--rd);}
+#main{margin-left:var(--sw);flex:1;min-width:0;padding:0 0 60px;}
+#hero{background:var(--g1);color:#fff;padding:18px 28px 14px;position:sticky;top:0;z-index:50;border-bottom:3px solid var(--teal);}
+#hero h1{font-size:19px;font-weight:700;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+#hero h1 .h1s{font-size:11px;color:#888;font-weight:400;}
+.hs{font-size:10px;color:#999;margin-top:3px;}
+.hm{display:flex;gap:18px;margin-top:7px;flex-wrap:wrap;}
+.hk{display:flex;flex-direction:column;}
+.hkl{font-size:8px;color:#777;text-transform:uppercase;letter-spacing:.06em;}
+.hkv{font-size:12px;font-weight:700;color:#fff;}
+.up{color:#5bc78a;}.dn{color:#e07070;}
+#ts{padding:18px 26px 0;}
+#ts h2{font-size:14px;font-weight:700;margin-bottom:10px;}
+.tw{overflow-x:auto;border:1px solid var(--border);border-radius:8px;background:var(--white);max-height:420px;overflow-y:auto;}
+table{border-collapse:collapse;white-space:nowrap;font-size:11.5px;width:100%;min-width:900px;}
+thead th{background:var(--g1);color:#fff;padding:7px 8px;text-align:left;font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;user-select:none;position:sticky;top:0;z-index:5;}
+thead th:hover{background:#444;}
+thead th.sa::after{content:' ↑';}thead th.sd::after{content:' ↓';}
+tbody tr{border-bottom:1px solid var(--border);}
+tbody tr:last-child{border-bottom:none;}
+tbody tr:hover{background:var(--teal-l);}
+td{padding:6px 8px;vertical-align:middle;}
+.tl{font-weight:700;font-size:13px;color:var(--teal);text-decoration:none;}
+.tl:hover{text-decoration:underline;}
+.rb-sb{background:var(--gl);color:var(--gd);font-size:9.5px;font-weight:700;padding:2px 6px;border-radius:20px;white-space:nowrap;}
+.rb-b{background:var(--teal-l);color:var(--teal);font-size:9.5px;font-weight:700;padding:2px 6px;border-radius:20px;white-space:nowrap;}
+.rb-h{background:var(--al);color:var(--ad);font-size:9.5px;font-weight:700;padding:2px 6px;border-radius:20px;white-space:nowrap;}
+.rb-u{background:var(--rl);color:var(--rd);font-size:9.5px;font-weight:700;padding:2px 6px;border-radius:20px;white-space:nowrap;}
+.rb-n{background:#eee;color:#666;font-size:9.5px;font-weight:700;padding:2px 6px;border-radius:20px;white-space:nowrap;}
+.num{font-family:'Courier New',monospace;font-size:11px;}
+.seg{font-size:9px;padding:1px 5px;border-radius:3px;background:var(--gbg);color:var(--g2);border:1px solid var(--border);}
+.sc-section{padding:18px 26px 0;}
+.sc-section h2{font-size:14px;font-weight:700;margin-bottom:14px;}
+.sc{background:var(--white);border:1px solid var(--border);border-radius:10px;margin-bottom:16px;overflow:hidden;scroll-margin-top:72px;}
+.ch{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;padding:12px 18px 10px;border-bottom:2px solid var(--teal);}
+.ck{font-size:22px;font-weight:800;color:var(--teal);letter-spacing:-.5px;}
+.cn{font-size:13px;font-weight:700;color:var(--g1);}
+.cd{font-size:10px;color:var(--g2);margin-top:2px;}
+.cpb{text-align:right;}
+.cp{font-size:17px;font-weight:700;color:var(--g1);}
+.cy{font-size:11px;font-weight:700;margin-top:2px;}
+.csco{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border);}
+.scc{padding:7px 12px;border-right:1px solid var(--border);text-align:center;}
+.scc:last-child{border-right:none;}
+.scl{font-size:8.5px;color:var(--g2);text-transform:uppercase;letter-spacing:.06em;}
+.scv{font-size:12px;font-weight:700;margin-top:2px;}
+.cbn{display:grid;grid-template-columns:repeat(6,1fr);background:var(--teal-l);border-bottom:1px solid var(--border);}
+.bncl{padding:6px 10px;border-right:1px solid var(--border);}
+.bncl:last-child{border-right:none;}
+.bnl{font-size:8.5px;color:var(--g2);}
+.bnv{font-size:11px;font-weight:700;color:var(--g1);margin-top:1px;}
+.cb{padding:14px 18px;}
+.tsec{margin-bottom:14px;}
+.tsec-title{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#fff;background:var(--g1);padding:4px 10px;border-radius:3px;display:inline-block;margin-bottom:8px;}
+.t2c{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.tg-h{font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--g2);padding-bottom:5px;border-bottom:1px solid var(--border);margin-bottom:5px;}
+.tr{display:grid;grid-template-columns:1fr 140px 50px;align-items:start;padding:4px 0;border-bottom:1px solid rgba(0,0,0,.04);gap:8px;}
+.tr:last-child{border-bottom:none;}
+.trl{font-size:11px;color:var(--g1);line-height:1.35;}
+.trv{font-size:10.5px;color:var(--g2);text-align:right;line-height:1.35;}
+.bp{background:var(--gl);color:var(--gd);font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;white-space:nowrap;}
+.bc{background:var(--al);color:var(--ad);font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;white-space:nowrap;}
+.bf{background:var(--rl);color:var(--rd);font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;white-space:nowrap;}
+.bn{background:#eee;color:#888;font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;white-space:nowrap;}
+.vr{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;}
+.vb{padding:10px 12px;border-radius:6px;font-size:11px;line-height:1.55;border-left:3px solid;}
+.vbu{background:var(--gl);border-color:var(--gd);}
+.vbd{background:var(--rl);border-color:var(--rd);}
+.vbt{font-size:10.5px;font-weight:700;margin-bottom:4px;}
+.vbu .vbt{color:var(--gd);}.vbd .vbt{color:var(--rd);}
+.disc{padding:18px 26px;font-size:9.5px;color:var(--g3);border-top:1px solid var(--border);line-height:1.6;}
+::-webkit-scrollbar{width:5px;height:5px;}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
+@media(max-width:800px){
+  #sb{display:none;}#main{margin-left:0;}
+  .t2c{grid-template-columns:1fr;}.csco{grid-template-columns:repeat(2,1fr);}
+  .cbn{grid-template-columns:repeat(3,1fr);}.ch{grid-template-columns:1fr auto;}
+  .vr{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ SIDEBAR ═══ -->
+<nav id="sb">
+  <div id="sb-h">
+    <div class="sb-ix">WATCHLIST</div>
+    <div class="sb-v">AI Stock Report</div>
+    <div class="sb-s">2 components · May 11, 2026</div>
+  </div>
+  <div id="sb-f"><input type="text" placeholder="Filter…" oninput="filterSB(this.value)"></div>
+  <div id="sb-l">
+    <div class="sg">AI ACCELERATORS &amp; X86 CPUS</div>
+    <a class="si" href="#c-AMD"><span class="st">AMD</span><span class="sn">Advanced Micro Devices, Inc.</span><span class="sr rh">H</span></a>
+    <div class="sg">MEMORY — DRAM/HBM/NAND</div>
+    <a class="si" href="#c-MU"><span class="st">MU</span><span class="sn">Micron Technology, Inc.</span><span class="sr rh">H</span></a>
+  </div>
+</nav>
+
+<!-- ═══ MAIN ═══ -->
+<main id="main">
+
+  <!-- HERO -->
+  <div id="hero">
+    <h1>AI Stock Report <span class="h1s">· 2 stocks · 4-Pillar Analysis · May 11, 2026</span></h1>
+    <div class="hs">Watchlist analysis · Data via Yahoo Finance · Not investment advice</div>
+    <div class="hm">
+      <div class="hk"><span class="hkl">Components</span><span class="hkv">2 stocks</span></div>
+      <div class="hk"><span class="hkl">Strong Buy</span><span class="hkv">0</span></div>
+      <div class="hk"><span class="hkl">Buy</span><span class="hkv">0</span></div>
+      <div class="hk"><span class="hkl">Hold</span><span class="hkv">2</span></div>
+      <div class="hk"><span class="hkl">Sell / U-weight</span><span class="hkv">0</span></div>
+      <div class="hk"><span class="hkl">Template</span><span class="hkv">Fund · Tech · Sentiment · News</span></div>
+    </div>
+  </div>
+
+  <!-- SUMMARY TABLE -->
+  <div id="ts">
+    <h2>📊 Summary Comparison — 2 Stocks &nbsp;<span style="font-size:11px;font-weight:400;color:#999">(click column headers to sort · click ticker to jump to profile)</span></h2>
+    <div class="tw">
+      <table>
+        <thead><tr>
+          <th onclick="sortT(0)">Ticker</th>
+          <th onclick="sortT(1)">Company</th>
+          <th onclick="sortT(2)">Sub-sector</th>
+          <th onclick="sortT(3)">~Price</th>
+          <th onclick="sortT(4)">Mkt Cap</th>
+          <th onclick="sortT(5)">TTM P/E</th>
+          <th onclick="sortT(6)">Fwd P/E</th>
+          <th onclick="sortT(7)">PEG</th>
+          <th onclick="sortT(8)">52W Return</th>
+          <th onclick="sortT(9)">Div Yield</th>
+          <th onclick="sortT(10)">Rating</th>
+        </tr></thead>
+        <tbody id="tb-body">
+          <tr>
+            <td><a class="tl" href="#c-AMD">AMD</a></td>
+            <td style="font-size:10.5px;white-space:normal;min-width:150px">Advanced Micro Devices, Inc.</td>
+            <td><span class="seg">AI Accelerators &amp; x86 CPUs</span></td>
+            <td class="num">$465.75</td>
+            <td class="num">$759.3B</td>
+            <td class="num">155.2x — bloated by margin recovery base</td>
+            <td class="num">36.1x — in line with high-growth semis</td>
+            <td class="num">1.10 — attractive vs growth rate</td>
+            <td class="num up">+331% (52w)</td>
+            <td class="num">None</td>
+            <td><span class="rb-h">Hold</span></td>
+          </tr>
+          <tr>
+            <td><a class="tl" href="#c-MU">MU</a></td>
+            <td style="font-size:10.5px;white-space:normal;min-width:150px">Micron Technology, Inc.</td>
+            <td><span class="seg">Memory — DRAM/HBM/NAND</span></td>
+            <td class="num">$808</td>
+            <td class="num">$910.5B</td>
+            <td class="num">38.1x — reflects cyclical trough EPS</td>
+            <td class="num">7.9x — bakes in HBM-driven earnings surge</td>
+            <td class="num">0.26 — deeply undervalued vs growth</td>
+            <td class="num up">+777% (52w)</td>
+            <td class="num">~0.08% — token payout</td>
+            <td><span class="rb-h">Hold</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- STOCK CARDS -->
+  <div class="sc-section">
+    <h2>📋 Individual Stock Profiles — 4-Pillar Template</h2>
+    <div class="sc" id="c-AMD">
+      <div class="ch">
+        <div class="ck">AMD</div>
+        <div>
+          <div class="cn">Advanced Micro Devices, Inc.</div>
+          <div class="cd">AI Accelerators &amp; x86 CPUs &nbsp;·&nbsp; <span class="rb-h">Hold</span></div>
+        </div>
+        <div class="cpb">
+          <div class="cp">$465.75</div>
+          <div class="cy up">+331% (52-wk)</div>
+        </div>
+      </div>
+      <div class="csco">
+        <div class="scc"><div class="scl">1. Fundamentals</div><div class="scv" style="color:#854F0B">Mixed</div></div>
+        <div class="scc"><div class="scl">2. Technicals</div><div class="scv" style="color:#A32D2D">Overbought</div></div>
+        <div class="scc"><div class="scl">3. Sentiment</div><div class="scv" style="color:#3B6D11">Strong</div></div>
+        <div class="scc"><div class="scl">4. News/Catalysts</div><div class="scv" style="color:#3B6D11">Positive</div></div>
+      </div>
+      <div class="cbn">
+        <div class="bncl"><div class="bnl">~Price</div><div class="bnv">$465.75 — at 52w high, parabolic move</div></div>
+        <div class="bncl"><div class="bnl">Mkt Cap</div><div class="bnv">$759.3B — mega-cap, approaching $1T</div></div>
+        <div class="bncl"><div class="bnl">TTM P/E</div><div class="bnv">155x — extreme on trailing earnings</div></div>
+        <div class="bncl"><div class="bnl">Fwd P/E</div><div class="bnv">36x — reasonable if growth holds</div></div>
+        <div class="bncl"><div class="bnl">PEG</div><div class="bnv">1.10 — fair given 91% EPS growth</div></div>
+        <div class="bncl"><div class="bnl">52-Wk</div><div class="bnv"><span class="up">+331%</span></div></div>
+      </div>
+      <div class="cb">
+
+        <!-- 1. FUNDAMENTALS -->
+        <div class="tsec">
+          <div class="tsec-title">1 · Fundamental Analysis</div>
+          <div class="t2c">
+            <div>
+              <div class="tg-h">Financial Health</div>
+              <div class="tr"><div class="trl">Revenue growth YoY</div><div class="trv">+37.8% — well above 15% growth threshold</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">EPS growth YoY</div><div class="trv">+91.2% — powerful operating leverage</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">Gross margin</div><div class="trv">53.1% — strong, above 40% bar</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">Operating margin</div><div class="trv">14.4% — below 15-20% target, room to expand</div><div><span class="bc">⚠</span></div></div>
+              <div class="tr"><div class="trl">Debt-to-Equity</div><div class="trv">6.0 reported (likely % i.e. ~0.06); $3.9B debt vs $12.3B cash</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">Current ratio</div><div class="trv">2.73 — comfortably above 1.5</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">Free cash flow</div><div class="trv">$7.17B FCF; ~19% FCF margin</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">Cash position</div><div class="trv">$12.3B cash vs $3.9B debt — net cash positive</div><div><span class="bp">✓</span></div></div>
+            </div>
+            <div>
+              <div class="tg-h">Valuation</div>
+              <div class="tr"><div class="trl">P/E ratio</div><div class="trv">TTM 155x / Fwd 36x — fwd reasonable for growth</div><div><span class="bc">⚠</span></div></div>
+              <div class="tr"><div class="trl">PEG ratio</div><div class="trv">1.10 — fairly valued vs growth</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">Price-to-Sales</div><div class="trv">20.3x — rich, above 10x SaaS comp bar</div><div><span class="bf">✗</span></div></div>
+              <div class="tr"><div class="trl">EV/EBITDA</div><div class="trv">98.8x — extremely elevated</div><div><span class="bf">✗</span></div></div>
+              <div class="tr"><div class="trl">Dividend yield</div><div class="trv">None — does not pay a dividend</div><div><span class="bn">—</span></div></div>
+              <div class="tg-h" style="margin-top:10px">Growth Prospects</div>
+              <div class="tr"><div class="trl">Revenue acceleration</div><div class="trv">Reaccelerating on MI300/MI350 ramp and EPYC share</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">TAM expansion</div><div class="trv">AI accelerator TAM &gt;$500B by 2028 per AMD</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">New products</div><div class="trv">MI350/MI400 roadmap; Zen 5 EPYC supercycle</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">Market share</div><div class="trv">Gaining server CPU share vs Intel; #2 in AI GPU</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">Geographic mix</div><div class="trv">Not disclosed in data</div><div><span class="bn">—</span></div></div>
+              <div class="tr"><div class="trl">Competitive moat</div><div class="trv">x86 duopoly + ROCm ecosystem; behind NVDA in CUDA moat</div><div><span class="bc">⚠</span></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. TECHNICALS -->
+        <div class="tsec">
+          <div class="tsec-title">2 · Technical Analysis</div>
+          <div class="t2c">
+            <div>
+              <div class="tg-h">Trend &amp; Moving Averages</div>
+              <div class="tr"><div class="trl">Price vs 50-day MA</div><div class="trv">+79% above 50DMA ($259.82) — extremely extended</div><div><span class="bf">✗</span></div></div>
+              <div class="tr"><div class="trl">Price vs 200-day MA</div><div class="trv">+113% above 200DMA ($218.87) — parabolic</div><div><span class="bf">✗</span></div></div>
+              <div class="tr"><div class="trl">MA alignment</div><div class="trv">50DMA &gt; 200DMA and both rising — bullish structure</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">Golden/Death cross</div><div class="trv">Golden cross long established; trend intact</div><div><span class="bp">✓</span></div></div>
+              <div class="tg-h" style="margin-top:10px">Momentum Indicators</div>
+              <div class="tr"><div class="trl">RSI (14-day)</div><div class="trv">80.8 — extreme overbought, reversal risk elevated</div><div><span class="bf">✗</span></div></div>
+              <div class="tr"><div class="trl">MACD</div><div class="trv">MACD 51.4 &gt; signal 39.6, histogram +11.8 — bullish but stretched</div><div><span class="bc">⚠</span></div></div>
+              <div class="tr"><div class="trl">Williams %R</div><div class="trv">Not provided, but implied near 0 given 52w high</div><div><span class="bc">⚠</span></div></div>
+            </div>
+            <div>
+              <div class="tg-h">Support, Resistance &amp; Volume</div>
+              <div class="tr"><div class="trl">Bollinger position</div><div class="trv">Riding upper band — extended</div><div><span class="bc">⚠</span></div></div>
+              <div class="tr"><div class="trl">Support levels</div><div class="trv">Near-term $400, then 50DMA ~$260</div><div><span class="bn">—</span></div></div>
+              <div class="tr"><div class="trl">Resistance</div><div class="trv">No overhead resistance — at all-time high $465.75</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">Volume</div><div class="trv">Avg 47.5M/day — healthy participation on rally</div><div><span class="bp">✓</span></div></div>
+              <div class="tg-h" style="margin-top:10px">Chart Patterns</div>
+              <div class="tr"><div class="trl">Pattern</div><div class="trv">Sustained breakout; parabolic blowoff risk forming</div><div><span class="bc">⚠</span></div></div>
+              <div class="tr"><div class="trl">Consolidation</div><div class="trv">No recent consolidation — straight-up move</div><div><span class="bc">⚠</span></div></div>
+              <div class="tr"><div class="trl">Breakout quality</div><div class="trv">New ATH today — momentum confirmed</div><div><span class="bp">✓</span></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. SENTIMENT -->
+        <div class="tsec">
+          <div class="tsec-title">3 · Analyst &amp; Market Sentiment</div>
+          <div class="t2c">
+            <div>
+              <div class="tg-h">Analyst Coverage</div>
+              <div class="tr"><div class="trl">Consensus rating</div><div class="trv">Strong Buy (mean 1.49) across 48 analysts</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">Price target upside</div><div class="trv">Mean $445 — ~4% BELOW current price</div><div><span class="bf">✗</span></div></div>
+              <div class="tr"><div class="trl">Target range</div><div class="trv">$225 low / $625 high — wide dispersion</div><div><span class="bc">⚠</span></div></div>
+              <div class="tr"><div class="trl">Recent revisions</div><div class="trv">Server CPU supercycle calls in recent news flow</div><div><span class="bp">✓</span></div></div>
+            </div>
+            <div>
+              <div class="tg-h">Institutional Activity</div>
+              <div class="tr"><div class="trl">Institutional ownership</div><div class="trv">74.6% — healthy confidence, not crowded</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">Insider ownership</div><div class="trv">0.43% — low; no insider buying flagged</div><div><span class="bn">—</span></div></div>
+              <div class="tr"><div class="trl">Short interest</div><div class="trv">2.2% of float, 1.08 days to cover — minimal bearish bets</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">Beta</div><div class="trv">2.40 — high volatility, amplifies market moves</div><div><span class="bc">⚠</span></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. NEWS & CATALYSTS -->
+        <div class="tsec">
+          <div class="tsec-title">4 · News &amp; Catalysts</div>
+          <div class="t2c">
+            <div>
+              <div class="tg-h">Recent Developments</div>
+              <div class="tr"><div class="trl">Server CPU supercycle</div><div class="trv">GuruFocus flags EPYC supercycle call driving rally</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">Barron&#39;s growth-stock note</div><div class="trv">Frames AMD as a winner to hold through strength</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">AI sector tailwind</div><div class="trv">Cerebras IPO upsize signals AI capex demand intact</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">Competitive backdrop</div><div class="trv">NVDA at records, QCOM near highs — broad AI bid</div><div><span class="bp">✓</span></div></div>
+            </div>
+            <div>
+              <div class="tg-h">Upcoming Catalysts</div>
+              <div class="tr"><div class="trl">Next earnings</div><div class="trv">2026-08-04 — ~3 months out, low event risk</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">Product roadmap</div><div class="trv">MI350 ramp; MI400 disclosures expected</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">Investor events</div><div class="trv">None disclosed in data</div><div><span class="bn">—</span></div></div>
+              <div class="tr"><div class="trl">Capital return</div><div class="trv">No dividend; buyback cadence not disclosed</div><div><span class="bn">—</span></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- VERDICT -->
+        <div class="vr">
+          <div class="vb vbu"><div class="vbt">Bull Case</div>AMD is executing on a rare combination of accelerating top-line (+37.8%) and explosive earnings leverage (+91.2% EPS), validating the MI300/MI350 AI ramp and the EPYC server CPU supercycle. The balance sheet is pristine — $12.3B cash versus $3.9B debt — and FCF of $7.2B funds the roadmap without dilution. With 48 analysts at Strong Buy, institutional ownership at a healthy 74.6%, and short interest just 2.2%, the setup is structurally bullish. On forward earnings of 36x against a PEG of 1.1, the stock is not unreasonably priced if growth holds. AI accelerator TAM expansion and Intel&#39;s continued share losses give multi-year runway.</div>
+          <div class="vb vbd"><div class="vbt">Key Risks</div>The stock is technically blown out: RSI 80.8, +79% above the 50DMA and +113% above the 200DMA, sitting exactly at a 52-week high after a +331% one-year run. Critically, the consensus price target of $445 is BELOW the current $465.75 — analysts are behind the move, leaving no fundamental cushion. TTM P/E of 155x and EV/EBITDA of 99x mean any growth disappointment, MI-series share loss to NVIDIA, or hyperscaler capex pause could trigger a violent mean-reversion. Beta of 2.40 magnifies any AI-sector drawdown. The smart entry is on a pullback toward the 50DMA, not chasing at all-time highs.</div>
+        </div>
+
+      </div>
+    </div>
+    <div class="sc" id="c-MU">
+      <div class="ch">
+        <div class="ck">MU</div>
+        <div>
+          <div class="cn">Micron Technology, Inc.</div>
+          <div class="cd">Memory — DRAM/HBM/NAND &nbsp;·&nbsp; <span class="rb-h">Hold</span></div>
+        </div>
+        <div class="cpb">
+          <div class="cp">$808</div>
+          <div class="cy up">+777% (52-wk)</div>
+        </div>
+      </div>
+      <div class="csco">
+        <div class="scc"><div class="scl">1. Fundamentals</div><div class="scv" style="color:#3B6D11">Strong</div></div>
+        <div class="scc"><div class="scl">2. Technicals</div><div class="scv" style="color:#A32D2D">Overheated</div></div>
+        <div class="scc"><div class="scl">3. Sentiment</div><div class="scv" style="color:#3B6D11">Bullish</div></div>
+        <div class="scc"><div class="scl">4. News/Catalysts</div><div class="scv" style="color:#3B6D11">Positive</div></div>
+      </div>
+      <div class="cbn">
+        <div class="bncl"><div class="bnl">~Price</div><div class="bnv">$808 — at 52-week high, no overhead resistance</div></div>
+        <div class="bncl"><div class="bnl">Mkt Cap</div><div class="bnv">$910.5B — mega-cap memory leader</div></div>
+        <div class="bncl"><div class="bnl">TTM P/E</div><div class="bnv">38.1x — elevated on trailing basis</div></div>
+        <div class="bncl"><div class="bnl">Fwd P/E</div><div class="bnv">7.9x — cheap on forward EPS power</div></div>
+        <div class="bncl"><div class="bnl">PEG</div><div class="bnv">0.26 — extremely low given growth</div></div>
+        <div class="bncl"><div class="bnl">52-Wk</div><div class="bnv"><span class="up">+777%</span></div></div>
+      </div>
+      <div class="cb">
+
+        <!-- 1. FUNDAMENTALS -->
+        <div class="tsec">
+          <div class="tsec-title">1 · Fundamental Analysis</div>
+          <div class="t2c">
+            <div>
+              <div class="tg-h">Financial Health</div>
+              <div class="tr"><div class="trl">Revenue growth YoY</div><div class="trv">+196% YoY, far above 15% growth threshold</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">EPS growth YoY</div><div class="trv">+756% YoY rebound from cyclical trough</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">Gross margin</div><div class="trv">58.4%, well above 40% target, expanding on HBM mix</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">Operating margin</div><div class="trv">67.6% (likely includes one-offs); structurally strong</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">Debt-to-Equity</div><div class="trv">14.9 reported — appears as ratio %, ~0.15x; low leverage</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">Current ratio</div><div class="trv">2.90 — ample short-term liquidity</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">Free cash flow</div><div class="trv">$2.9B FCF; $30.7B operating CF — heavy capex drag</div><div><span class="bc">⚠</span></div></div>
+              <div class="tr"><div class="trl">Cash position</div><div class="trv">$14.6B cash vs $10.8B debt; net cash positive</div><div><span class="bp">✓</span></div></div>
+            </div>
+            <div>
+              <div class="tg-h">Valuation</div>
+              <div class="tr"><div class="trl">P/E ratio (TTM)</div><div class="trv">38.1x — high on trailing, but earnings ramping</div><div><span class="bc">⚠</span></div></div>
+              <div class="tr"><div class="trl">Forward P/E</div><div class="trv">7.9x — cheap vs semis peers if estimates hold</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">PEG ratio</div><div class="trv">0.26 — deeply undervalued relative to growth</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">Price-to-Sales</div><div class="trv">15.7x — rich for memory, reflects HBM premium</div><div><span class="bc">⚠</span></div></div>
+              <div class="tr"><div class="trl">EV/EBITDA</div><div class="trv">22.8x — above 15x typical industrial target</div><div><span class="bc">⚠</span></div></div>
+              <div class="tr"><div class="trl">Dividend yield</div><div class="trv">0.08% — negligible, not an income name</div><div><span class="bn">—</span></div></div>
+              <div class="tg-h" style="margin-top:10px">Growth Prospects</div>
+              <div class="tr"><div class="trl">Revenue trajectory</div><div class="trv">+196% YoY; HBM/AI memory demand accelerating</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">TAM expansion</div><div class="trv">HBM TAM growing multi-fold w/ AI accelerator builds</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">New products</div><div class="trv">HBM3E, 1y DRAM, G9 NAND ramping in mix</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">Market share</div><div class="trv">Top-3 DRAM player; gaining HBM share vs Samsung/SK</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">Geographic mix</div><div class="trv">Diversified US/Asia/EU; China exposure a risk</div><div><span class="bc">⚠</span></div></div>
+              <div class="tr"><div class="trl">Competitive moat</div><div class="trv">Capital intensity, IP, 3-player DRAM oligopoly</div><div><span class="bp">✓</span></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. TECHNICALS -->
+        <div class="tsec">
+          <div class="tsec-title">2 · Technical Analysis</div>
+          <div class="t2c">
+            <div>
+              <div class="tg-h">Trend &amp; Moving Averages</div>
+              <div class="tr"><div class="trl">Price vs 50-day MA</div><div class="trv">+77% above 50DMA ($457) — extremely extended</div><div><span class="bf">✗</span></div></div>
+              <div class="tr"><div class="trl">Price vs 200-day MA</div><div class="trv">+175% above 200DMA ($294) — parabolic</div><div><span class="bf">✗</span></div></div>
+              <div class="tr"><div class="trl">MA alignment</div><div class="trv">50DMA &gt; 200DMA, both rising — long-term bullish</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">Golden cross status</div><div class="trv">Golden cross long established; trend intact</div><div><span class="bp">✓</span></div></div>
+              <div class="tg-h" style="margin-top:10px">Momentum Indicators</div>
+              <div class="tr"><div class="trl">RSI (14-day)</div><div class="trv">89.6 — extreme overbought, reversion risk high</div><div><span class="bf">✗</span></div></div>
+              <div class="tr"><div class="trl">MACD</div><div class="trv">79.3 vs signal 51.9, histogram +27.4 — strong but stretched</div><div><span class="bc">⚠</span></div></div>
+              <div class="tr"><div class="trl">Williams %R</div><div class="trv">Implied near 0 given price at 52w high</div><div><span class="bf">✗</span></div></div>
+            </div>
+            <div>
+              <div class="tg-h">Support, Resistance &amp; Volume</div>
+              <div class="tr"><div class="trl">Bollinger position</div><div class="trv">Price piercing upper band — overextended</div><div><span class="bf">✗</span></div></div>
+              <div class="tr"><div class="trl">Support levels</div><div class="trv">Prior breakout near $600; 50DMA $457 deeper support</div><div><span class="bn">—</span></div></div>
+              <div class="tr"><div class="trl">Resistance</div><div class="trv">At 52-week high $808 — no overhead supply</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">Volume</div><div class="trv">20d avg ~43.7M shares; rising on strong volume</div><div><span class="bp">✓</span></div></div>
+              <div class="tg-h" style="margin-top:10px">Chart Patterns</div>
+              <div class="tr"><div class="trl">Pattern read</div><div class="trv">Sustained breakout/parabolic uptrend, no consolidation</div><div><span class="bc">⚠</span></div></div>
+              <div class="tr"><div class="trl">Consolidation</div><div class="trv">None recent — straight-up move, lacks base</div><div><span class="bf">✗</span></div></div>
+              <div class="tr"><div class="trl">Breakout quality</div><div class="trv">New ATH on heavy volume — momentum intact</div><div><span class="bp">✓</span></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. SENTIMENT -->
+        <div class="tsec">
+          <div class="tsec-title">3 · Analyst &amp; Market Sentiment</div>
+          <div class="t2c">
+            <div>
+              <div class="tg-h">Analyst Coverage</div>
+              <div class="tr"><div class="trl">Consensus rating</div><div class="trv">Strong Buy; mean 1.48 across 42 analysts</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">Price target upside</div><div class="trv">Mean $574 — implies -29% downside vs $808</div><div><span class="bf">✗</span></div></div>
+              <div class="tr"><div class="trl">Target dispersion</div><div class="trv">Range $249–$1000; median $550 below spot</div><div><span class="bc">⚠</span></div></div>
+              <div class="tr"><div class="trl">Recent revisions</div><div class="trv">Estimates rising amid HBM demand commentary</div><div><span class="bp">✓</span></div></div>
+            </div>
+            <div>
+              <div class="tg-h">Institutional Activity</div>
+              <div class="tr"><div class="trl">Institutional ownership</div><div class="trv">85.4% — high conviction, slightly crowded</div><div><span class="bc">⚠</span></div></div>
+              <div class="tr"><div class="trl">Insider activity</div><div class="trv">Insider ownership only 0.25%; no notable buying disclosed</div><div><span class="bn">—</span></div></div>
+              <div class="tr"><div class="trl">Short interest</div><div class="trv">3.23% of float, 0.69 days to cover — low skepticism</div><div><span class="bp">✓</span></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. NEWS & CATALYSTS -->
+        <div class="tsec">
+          <div class="tsec-title">4 · News &amp; Catalysts</div>
+          <div class="t2c">
+            <div>
+              <div class="tg-h">Recent Developments</div>
+              <div class="tr"><div class="trl">Memory tape rally</div><div class="trv">Memory chip stocks at record highs; DRAM ETF +100% YTD</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">Sell-side hype</div><div class="trv">Motley Fool $2,000 target piece — froth signal</div><div><span class="bc">⚠</span></div></div>
+              <div class="tr"><div class="trl">Sector tailwind</div><div class="trv">AI/HBM demand narrative driving chipmaker gains</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">Macro/geopolitics</div><div class="trv">Trump-Xi summit, China exposure a watch item</div><div><span class="bc">⚠</span></div></div>
+            </div>
+            <div>
+              <div class="tg-h">Upcoming Catalysts</div>
+              <div class="tr"><div class="trl">Next earnings</div><div class="trv">2026-06-24 — ~6 weeks out, post-quiet-period clarity</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">HBM ramp updates</div><div class="trv">HBM3E qualifications/share gains key narrative</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">Capex/guidance</div><div class="trv">FY guide raises possible given pricing strength</div><div><span class="bp">✓</span></div></div>
+              <div class="tr"><div class="trl">Buyback/dividend</div><div class="trv">No major capital-return announcement signaled</div><div><span class="bn">—</span></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- VERDICT -->
+        <div class="vr">
+          <div class="vb vbu"><div class="vbt">Bull Case</div>Micron is the cleanest US-listed play on the AI memory super-cycle, with HBM3E ramping into a tight DRAM oligopoly. Revenue is up 196% YoY and EPS up 756% off the cyclical trough, yet shares trade at just 7.9x forward earnings with a PEG of 0.26 — extraordinarily cheap if estimates hold. Gross margins of 58% and operating margins of 68% reflect record memory pricing and HBM mix benefit, while $14.6B cash exceeds $10.8B debt. Analyst sentiment is unanimously bullish (1.48 mean across 42 analysts, Strong Buy) and short interest is just 3.2%. If HBM demand from AI accelerator builds sustains through 2027, current forward multiples leave room for material upside.</div>
+          <div class="vb vbd"><div class="vbt">Key Risks</div>Technicals are flashing extreme caution: RSI 89.6, price 77% above the 50DMA and 175% above the 200DMA, with shares parabolic at the 52-week high and the consensus target of $574 implying ~29% downside. Memory is historically the most cyclical semi subsector — any sign of DRAM/HBM oversupply, slower AI capex, or share loss to Samsung/SK Hynix could compress both estimates and multiples sharply. Institutional ownership at 85% leaves few incremental buyers, and froth signals (e.g., $2,000 target articles) typically mark local tops. China exposure and US-China trade dynamics around the Trump-Xi summit add geopolitical risk. Free cash flow of just $2.9B vs $30.7B operating cash flow underscores the capex intensity that punishes the stock when pricing turns.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="disc">
+    Generated 2026-05-11 19:12 UTC by ai_reports. Data from Yahoo Finance via yfinance; analysis produced by Claude (claude-opus-4-7) applying the 4-pillar checklist in Analysis_Prompt.txt. This report is informational only and is not investment advice. Past performance does not predict future results. Verify all figures against primary sources before making any trading decision.
+  </div>
+
+</main>
+
+<script>
+function filterSB(q){
+  document.querySelectorAll('.si').forEach(a=>{
+    const t=a.textContent.toLowerCase();
+    a.style.display=t.includes(q.toLowerCase())?'':'none';
+  });
+}
+let _sc=-1,_sd=1;
+function sortT(c){
+  const ths=document.querySelectorAll('thead th');
+  ths.forEach((h,i)=>{h.classList.remove('sa','sd');});
+  if(_sc===c)_sd*=-1;else{_sc=c;_sd=1;}
+  ths[c].classList.add(_sd===1?'sa':'sd');
+  const tb=document.getElementById('tb-body');
+  const rows=Array.from(tb.querySelectorAll('tr'));
+  rows.sort((a,b)=>{
+    const av=a.cells[c].textContent.trim().replace(/[~$%+,xB]/g,'');
+    const bv=b.cells[c].textContent.trim().replace(/[~$%+,xB]/g,'');
+    const an=parseFloat(av),bn=parseFloat(bv);
+    if(!isNaN(an)&&!isNaN(bn))return(an-bn)*_sd;
+    return av.localeCompare(bv)*_sd;
+  });
+  rows.forEach(r=>tb.appendChild(r));
+}
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const id=e.target.id.replace('c-','');
+      document.querySelectorAll('.si').forEach(a=>{
+        a.classList.toggle('active',a.href&&a.href.endsWith('#c-'+id));
+      });
+    }
+  });
+},{rootMargin:'-20% 0px -70% 0px'});
+document.querySelectorAll('.sc').forEach(c=>obs.observe(c));
+</script>
+</body>
+</html>
